@@ -29,7 +29,6 @@
       goto(`${page.currentPath}?${urlQuery}`, true, true);
 
       page.visibleData = await filterPage(page.data, 'all', query);
-      console.dir(page.visibleData)
     }, 500);
   };
 
