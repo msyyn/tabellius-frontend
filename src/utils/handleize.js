@@ -4,7 +4,11 @@ export function handleize(str) {
 };
 
 export function generateHandle(stamp) {
-  return handleize(`${stamp.merkin_vari}-${stamp.painosmaara}${stamp.nimellisarvo}-${stamp.ilmestyspaiva.split('.').pop()}`)
+  /*
+    color-YEARfilename
+    e.g. monivärinen-18651204
+  */
+  return handleize(`${stamp.merkin_vari || 'merkki'}-${stamp.ilmestyspaiva.split('.').pop()}${stamp.kuvan_url.split('/').pop().split('.').shift()}`);
 }
 
 export default { handleize, generateHandle };
