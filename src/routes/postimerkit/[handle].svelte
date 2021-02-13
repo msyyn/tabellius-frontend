@@ -56,12 +56,8 @@
   export let stamp;
   export let page;
 
-  console.dir(page.path)
-  
   let breadcrumb = page.path.replaceAll('/','').replace(page.params.handle,'');
   breadcrumb = breadcrumb.charAt(0).toUpperCase() + breadcrumb.slice(1);
-
-  console.dir(stamp);
 
   const viewVariant = (variant) => {
     page.query.versio = variant;
