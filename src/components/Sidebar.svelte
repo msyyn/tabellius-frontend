@@ -76,11 +76,11 @@
               <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
             </svg>
           </span>
-          by <a href="https://github.com/msyyn" class="ml-0.5 transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500" title="View Mika Syynimaa on GitHub">Mika Syynimaa</a>
+          by <a rel="external" href="https://github.com/msyyn" class="ml-0.5 transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500" title="View Mika Syynimaa on GitHub">Mika Syynimaa</a>
         </span>
         <span class="text-gray-500 text-xs">
           Like what you see?
-          <a class="transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500" target="blank" href="https://buymeacoffee.com/msyyn">Buy me a coffee</a>
+          <a rel="external" class="transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500" target="blank" href="https://buymeacoffee.com/msyyn">Buy me a coffee</a>
         </span>
       </div>
     </nav>
