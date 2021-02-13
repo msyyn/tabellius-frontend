@@ -1,5 +1,5 @@
 /*
-  @array, string      -- array to filter
+  @array, object      -- array to filter
   @property, string   -- to search for (e.g. asiasanat, merkin_nimi
   @value, string      -- to search with
 */

@@ -1,4 +1,6 @@
 <script>
+  import Button from './Button.svelte';
+  import SortingFiltering from './SortingFiltering.svelte';
   import SidebarToggle from './SidebarToggle.svelte';
   import filterPage from '../utils/filterPage.js';
   import paginate from '../utils/paginate.js';
@@ -65,9 +67,9 @@
         <svg class="hidden lg:block w-5 h-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-        <input bind:value={page.currentQuery} on:keyup={({ target: { value } }) => onSearch(value)} type="text" placeholder="Hae sivustolta..." class="w-full lg:w-auto transition duration-300 ease-linear px-4 py-2 rounded-md lg:max-w-sm md:flex-1 focus:outline-none bg-gray-50 {page.currentQuery ? 'lg:bg-gray-50' : 'lg:bg-transparent'} hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-gray-100 mr-2"/>
+        <input bind:value={page.currentQuery} on:keyup={({ target: { value } }) => onSearch(value)} type="text" placeholder="Hae sivustolta..." class="w-full lg:w-auto transition duration-300 ease-linear px-4 py-2 rounded-md lg:max-w-sm md:flex-1 focus:outline-none bg-gray-50 {page.currentQuery ? 'lg:bg-gray-50' : 'lg:bg-transparent'} hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-gray-100"/>
         {#if page.currentQuery}
-          <button type="button" on:click={clearQuery} class="text-gray-400 hover:text-indigo-500 bg-gray-50 hover:bg-indigo-50 focus:outline-none p-3 rounded-md">
+          <button type="button" on:click={clearQuery} class="text-gray-400 hover:text-indigo-500 bg-gray-50 hover:bg-indigo-50 focus:outline-none p-3 rounded-md ml-2">
             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -76,22 +78,27 @@
       </div>
     {/if}
   </div>
+
   <!--
   {#if page}
     <div class="hidden lg:flex items-center justify-end space-x-2 ml-auto">
-      <button type="button" on:click={() => setViewMode('list')} class="{page.currentView == 'list' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}  hover:text-indigo-500 hover:bg-indigo-50 transition duration-300 ease-linear focus:outline-none p-3 rounded-md flex flex-row items-center flex-1 lg:flex-grow-0">
-        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <Button value="Listanäkymä" isToggled={page.currentView == 'list'} on:click={() => setViewMode('list')} class="{page.currentView == 'list' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}">
+        <svg slot="icon" class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
         </svg>
-        <span>Listanäkymä</span>
-      </button>
-      <button type="button" on:click={() => setViewMode('grid')} class="{page.currentView == 'grid' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}  hover:text-indigo-500 hover:bg-indigo-50 transition duration-300 ease-linear focus:outline-none p-3 rounded-md flex flex-row items-center flex-1 lg:flex-grow-0">
-        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      </Button>
+
+      <Button value="Ruudukko" isToggled={page.currentView == 'grid'} on:click={() => setViewMode('grid')}>
+        <svg slot="icon" class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span>Ruudukko</span>
-      </button>
+      </Button>
     </div>
   {/if}
   -->
 </header>
+
+<!-- Filters -->
+{#if page && page.showFilters}
+  <SortingFiltering bind:page/>
+{/if}

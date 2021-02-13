@@ -5,7 +5,7 @@
 </script>
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-0 py-12">
   {#each page.visibleData as stamp, i}
-    <a rel="prefetch" in:fade={{delay: i * 40}} class="transition duration-300 ease-linear border items-center border-indigo-50 p-2 flex flex-row bg-white -mr-0.5 -mb-0.5 hover:z-10 hover:shadow-inner hover:border-indigo-100" href="postimerkit/{handleize(stamp.merkin_nimi)}{stamp.merkin_vari.length ? `?versio=${generateHandle(stamp)}` : ''}">
+    <a rel="prefetch" in:fade={{delay: i/4 * 100, duration: 300}} class="transition duration-300 ease-linear border items-center border-indigo-50 p-2 flex flex-row bg-white -mr-0.5 -mb-0.5 hover:z-10 hover:shadow-inner hover:border-indigo-100" href="postimerkit/{handleize(stamp.merkin_nimi)}{stamp.merkin_vari.length ? `?versio=${generateHandle(stamp)}` : ''}">
       
       <img class="h-24 w-24" src="{stamp.kuvan_url}" alt="{stamp.merkin_nimi}, {stamp.taiteilija} - {stamp.ilmestyspaiva}" loading="lazy"/>
     

@@ -35,11 +35,11 @@
 </script>
 
 {#if sidebarReady && $SidebarOpen}
-  <aside in:fly={{x: -40, duration: 360 }} out:fly={{x: -200, duration: 360}} use:clickOutside on:clickedOutside={clickedOutside} class="fixed lg:relative bg-white lg:flex h-screen overflow-hidden p-6 pr-12{ $SidebarOpen ? ' z-10' : ' hidden' }">
+  <aside in:fly={{x: -40, duration: 360 }} out:fly={{x: -200, duration: 360}} use:clickOutside on:clickedOutside={clickedOutside} class="fixed lg:relative bg-white lg:flex h-screen overflow-hidden p-6 pr-12{ $SidebarOpen ? ' z-20' : ' hidden' }">
 
     <nav class="flex flex-col min-h-full">
 
-      <h1 class="tracking-tight text-2xl select-none text-gray-700 font-bold text-upcase mr-0 mb-6">Tabellius</h1>
+      <h1 class="tracking-tight text-2xl select-none text-gray-700 font-bold text-upcase mr-0 mb-6"><a href="." title="Tabellius - Suomalaiset postimerkit">Tabellius</a></h1>
 
       <h6 class="block tracking-widest text-xs select-none text-gray-300 uppercase font-bold text-upcase mb-6">Postimerkit</h6>
 

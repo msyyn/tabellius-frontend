@@ -12,6 +12,7 @@
 </script>
 
 <script>
+  import sortBy from '../utils/sortBy.js';
   import paginate from '../utils/paginate.js';
   import Toolbar from '../components/Toolbar.svelte';
   import Pagination from '../components/Pagination.svelte';
@@ -33,6 +34,7 @@
   export let page = {
     // pagination
     data: snapshot,
+    dataCache: [], // filtering puts data here for temporar usage
     paginateBy: 32,
     currentPage: parseInt(params.query.page) || 1,
     suggestedPage: parseInt(params.query.page) || 1,   // Paginate input controls this
@@ -43,10 +45,12 @@
     currentPath: params.path,
     currentQuery: params.query.search,
     currentView: params.query.view || 'grid',
-    currentParams: params.query
+    currentParams: params.query,
+    showFilters: true
   };
 
-  page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+  $: page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+
   if (page.currentPage > page.maxPages) {
     page.currentPage = page.maxPages;
     page.suggestedPage = page.maxPages;

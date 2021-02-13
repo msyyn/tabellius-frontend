@@ -173,6 +173,6 @@
 
 <style>
   .variant-swatch--img {
-    filter: blur(15px) contrast(1.8) brightness(0.9);
+    filter: blur(10px) contrast(0.8) brightness(1.15);
   }
 </style>
