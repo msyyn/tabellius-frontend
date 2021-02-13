@@ -77,6 +77,7 @@
       </div>
     {/if}
   </div>
+  <!--
   {#if page}
     <div class="hidden lg:flex items-center justify-end space-x-2 ml-auto">
       <button type="button" on:click={() => setViewMode('list')} class="{page.currentView == 'list' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}  hover:text-indigo-500 hover:bg-indigo-50 transition duration-300 ease-linear focus:outline-none p-3 rounded-md flex flex-row items-center flex-1 lg:flex-grow-0">
@@ -93,4 +94,5 @@
       </button>
     </div>
   {/if}
+  -->
 </header>
