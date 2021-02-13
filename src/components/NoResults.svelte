@@ -1,4 +1,5 @@
 <script>
+  export let page;
   import { goto } from '@sapper/app'; 
   function resetPage() {
     goto(page.currentPath, true, true);
