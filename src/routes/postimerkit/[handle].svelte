@@ -71,8 +71,8 @@
 </script>
 
 <Toolbar/>
-<div class="flex flex-wrap justify-center items-start w-full min-h-full bg-gray-50 rounded-md lg:rounded-2xl">
-  <div class="px-6 py-6 lg:px-8 lg:py-36 max-w-4xl w-full flex flex-col-reverse lg:flex-row">
+<div class="flex flex-wrap justify-center items-start w-full bg-gray-50 rounded-md lg:rounded-2xl">
+  <div class="px-6 py-6 lg:px-8 lg:py-36 max-w-4xl w-full min-h-full flex flex-col-reverse lg:flex-row">
     <div class="lg:w-2/3 lg:pr-16">
 
       <!-- Breadcrumb desktop -->
@@ -82,8 +82,8 @@
         <span class="text-gray-400 text-xs">{stamp.merkin_nimi}</span>
       </div>
 
-      <h1 class="mb-2 text-4xl font-bold">{stamp.merkin_nimi}</h1>
-      <h2 class="mb-6 flex flex-row items-center transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500 text-2xl">
+      <h1 class="mb-2 text-xl lg:text-4xl font-bold">{stamp.merkin_nimi}</h1>
+      <h2 class="mb-6 flex flex-row items-center transition duration-300 ease-linear text-indigo-300 hover:text-indigo-500 text-lg lg:text-2xl">
         <a href="/taiteilijat/{handleize(stamp.taiteilija)}" title="Taiteilijan {stamp.taiteilija} koostesivu">{stamp.taiteilija}</a>
       </h2>
       <h3 class="mb-6 flex flex-row items-center text-gray-500 text-md">
