@@ -78,7 +78,7 @@
     {/if}
   </div>
   {#if page}
-    <div class="items-center justify-end space-x-2 flex-1 flex ml-auto">
+    <div class="hidden lg:flex items-center justify-end space-x-2 flex ml-auto">
       <button type="button" on:click={() => setViewMode('list')} class="{page.currentView == 'list' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}  hover:text-indigo-500 hover:bg-indigo-50 transition duration-300 ease-linear focus:outline-none p-3 rounded-md flex flex-row items-center flex-1 lg:flex-grow-0">
         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
