@@ -62,7 +62,7 @@
     <SidebarToggle/>
     {#if page}
       <!-- search icon -->
-      <div class="w-full flex flex-row items-center mt-8 mb-4 lg:mb-0 lg:mt-0 lg:w-auto">
+      <div class="w-full flex flex-row items-center mt-8 lg:mb-0 lg:mt-0 lg:w-auto">
         <svg class="hidden lg:block w-5 h-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
@@ -78,7 +78,7 @@
     {/if}
   </div>
   {#if page}
-    <div class="hidden lg:flex items-center justify-end space-x-2 flex ml-auto">
+    <div class="hidden lg:flex items-center justify-end space-x-2 ml-auto">
       <button type="button" on:click={() => setViewMode('list')} class="{page.currentView == 'list' ? 'text-indigo-500 bg-indigo-50': 'text-gray-400 bg-gray-50'}  hover:text-indigo-500 hover:bg-indigo-50 transition duration-300 ease-linear focus:outline-none p-3 rounded-md flex flex-row items-center flex-1 lg:flex-grow-0">
         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
