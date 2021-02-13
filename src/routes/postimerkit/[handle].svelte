@@ -88,9 +88,22 @@
         Käytössä {stamp.currentVariant.ilmestyspaiva} - {stamp.currentVariant.kayton_paattyminen}
       </h3>
 
+      <!-- Värimuunnelmat -->
+      {#if stamp.variants.length > 1}
+        <h5 class="font-medium text-lg flex flex-row items-center">Värimuunnelmat <span class="text-xs text-gray-500"><span class="mx-2">&mdash;</span>{stamp.currentVariant.merkin_vari}</span></h5>
+        <div class="flex flex-wrap mt-4">
+          {#each stamp.variants as variant}
+            <a class="{generateHandle(variant) == generateHandle(stamp.currentVariant) ? 'scale-110 ring-indigo-300' : 'scale-100 ring-indigo-50 hover:shadow-lg'} overflow-hidden relative transition duration-300 ease-linear shadow-none border-white border-2 transform hover:scale-110 ring-2 ring-offset-0 cursor-pointer ring-offset-gray-50 w-10 h-10 rounded-full mr-2 mb-2 lg:mr-4 lg:mb-4 bg-indigo-50"
+                on:click|preventDefault={() => viewVariant(generateHandle(variant))} href="{page.path}?versio={generateHandle(variant)}" title="Näytä väri {variant.merkin_vari}">
+              <div class="variant-swatch--img w-full h-full bg-center bg-no-repeat" style="background-image:url('{variant.kuvan_url}');"></div>
+            </a>
+          {/each}
+        </div>
+      {/if}
+
       <!-- Perustiedot, ikonit -->
-      <div class="space-y-6">
-        <div class="transition duration-300 ease-linear bg-transparent hover:text-indigo-500 text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
+      <div class="mt-6 flex flex-wrap flex-col md:flex-row lg:flex-row">
+        <div class="md:w-1/2 lg:w-1/2 mb-4 transition duration-300 ease-linear bg-transparent hover:text-indigo-500 text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
           <div class="w-10 h-10 p-2 rounded-lg text-indigo-300 bg-indigo-50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -102,7 +115,7 @@
           </a>
         </div>
 
-        <div class="transition duration-300 ease-linear bg-transparent hover:text-indigo-500 text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
+        <div class="md:w-1/2 lg:w-1/2 mb-4 transition duration-300 ease-linear bg-transparent hover:text-indigo-500 text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
           <div class="w-10 h-10 p-2 rounded-lg text-indigo-300 bg-indigo-50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -114,21 +127,7 @@
           </a>
         </div>
 
-        {#if stamp.nimellisarvo}
-          <div class="transition duration-300 ease-linear bg-transparent text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
-            <div class="w-10 h-10 p-2 rounded-lg text-indigo-300 bg-indigo-50">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <span class="ml-4">
-              <span class="text-gray-300 text-xs uppercase tracking-wide block">Nimellisarvo</span>
-              <span class="font-medium tracking-wide text-sm block">{stamp.nimellisarvo} {stamp.valuutta}a</span>
-            </span>
-          </div>
-        {/if}
-
-        <div class="transition duration-300 ease-linear bg-transparent text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
+        <div class="md:w-1/2 lg:w-1/2 mb-4 transition duration-300 ease-linear bg-transparent text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
           <div class="w-10 h-10 p-2 rounded-lg text-indigo-300 bg-indigo-50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -136,23 +135,24 @@
           </div>
           <span class="ml-4">
             <span class="text-gray-300 text-xs uppercase tracking-wide block">Painosmäärä</span>
-            <span class="font-medium tracking-wide text-sm block">{stamp.painosmaara > 0 ? `${stamp.painosmaara.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kpl` : 'Ei tiedossa'}</span>
+            <span class="font-medium tracking-wide text-sm block">{stamp.currentVariant.painosmaara ? `${stamp.currentVariant.painosmaara.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kpl` : 'Ei tiedossa'}</span>
           </span>
         </div>
-      </div>
 
-      <!-- Värimuunnelmat -->
-      {#if stamp.variants.length > 1}
-        <h5 class="mt-6 font-medium text-lg flex flex-row items-center">Värimuunnelmat <span class="text-xs text-gray-500"><span class="mx-2">&mdash;</span>{stamp.currentVariant.merkin_vari}</span></h5>
-        <div class="flex flex-wrap mt-4">
-          {#each stamp.variants as variant}
-            <a class="{generateHandle(variant) == generateHandle(stamp.currentVariant) ? 'scale-110 ring-indigo-300' : 'scale-100 ring-indigo-50 hover:shadow-lg'} overflow-hidden relative transition duration-300 ease-linear shadow-none border-white border-2 transform hover:scale-110 ring-2 ring-offset-0 cursor-pointer ring-offset-gray-50 w-10 h-10 rounded-full mr-2 mb-2 lg:mr-4 lg:mb-4 bg-indigo-50"
-                on:click|preventDefault={() => viewVariant(generateHandle(variant))} href="{page.path}?versio={generateHandle(variant)}" title="Näytä väri {variant.merkin_vari}">
-              <div class="variant-swatch--img w-full h-full bg-center bg-no-repeat" style="background-image:url('{variant.kuvan_url}');"></div>
-            </a>
-          {/each}
-        </div>
-      {/if}
+        {#if stamp.currentVariant.nimellisarvo}
+          <div class="md:w-1/2 lg:w-1/2 mb-4 transition duration-300 ease-linear bg-transparent text-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center relative">
+            <div class="w-10 h-10 p-2 rounded-lg text-indigo-300 bg-indigo-50">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="ml-4">
+              <span class="text-gray-300 text-xs uppercase tracking-wide block">Nimellisarvo</span>
+              <span class="font-medium tracking-wide text-sm block">{stamp.currentVariant.nimellisarvo}{stamp.valuutta ? ` ${stamp.valuutta}a` : ' (valuutta ei tiedossa)'}</span>
+            </span>
+          </div>
+        {/if}
+      </div>
 
       <div class="mt-6 pt-6 border-t border-gray-200 flex flex-row flex-wrap lg:max-w-md">
         {#each stamp.asiasanat as tag}
