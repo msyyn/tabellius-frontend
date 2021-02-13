@@ -12,7 +12,6 @@
 </script>
 
 <script>
-  import sortBy from '../utils/sortBy.js';
   import paginate from '../utils/paginate.js';
   import Toolbar from '../components/Toolbar.svelte';
   import Pagination from '../components/Pagination.svelte';

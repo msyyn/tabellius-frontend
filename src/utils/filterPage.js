@@ -5,6 +5,13 @@
 */
 
 async function filterPage(array, property, value) {
+  value = value.toLowerCase();
+
+  // hack to make search work on taiteilijat / painotalot collections
+  let isWrapped = false;
+  if (array[0].stamps) { isWrapped = array[0].nimi; array = array[0].stamps; };
+
+  // perform search
   if (property == "all") {
     array = array.filter((res) => {
       if ( 
@@ -23,6 +30,15 @@ async function filterPage(array, property, value) {
       if (res[property] && res[property].toLowerCase().includes(value)) { return res };
     });
   };
+  
+  // wrap to keep object sturcture correct for taiteilijat / painotalot
+  if (isWrapped) { 
+    array = {
+      nimi: isWrapped,
+      stamps: array
+    } 
+  };
+
   return array;
 };
 

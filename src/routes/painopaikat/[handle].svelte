@@ -59,7 +59,8 @@
       currentParams: params.query
     };
   
-    page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+    $: page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+
     if (page.currentPage > page.maxPages) {
       page.currentPage = page.maxPages;
       page.suggestedPage = page.maxPages;
@@ -71,7 +72,7 @@
     page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
   </script>
   
-  <Toolbar bind:page/>
+  <Toolbar showFilters={true} bind:page/>
   <Pagination bind:page/>
   {#if page.visibleData.length}
     <PrinterGrid limit={0} bind:page/>

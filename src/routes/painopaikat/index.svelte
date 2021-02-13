@@ -62,7 +62,8 @@
     currentParams: params.query
   };
 
-  page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+  $: page.maxPages = Math.ceil(page.data.length / page.paginateBy);
+
   if (page.currentPage > page.maxPages) {
     page.currentPage = page.maxPages;
     page.suggestedPage = page.maxPages;

@@ -16,8 +16,8 @@
   };
 
   $: {
-    page.currentPage = parseInt(page.currentParams.page);
-    page.suggestedPage = parseInt(page.currentParams.page);
+    page.currentPage = parseInt(page.currentParams.page || 1);
+    page.suggestedPage = parseInt(page.currentParams.page || 1);
   }
 </script>
 
