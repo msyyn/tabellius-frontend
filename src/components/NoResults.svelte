@@ -1,6 +1,7 @@
 <script>
   export let page;
   import { goto } from '@sapper/app'; 
+  import { paginate } from '../utils/paginate.js';
   function resetPage() {
     goto(page.currentPath, true, true);
     page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
