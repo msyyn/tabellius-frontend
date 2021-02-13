@@ -26,7 +26,6 @@
     
     let sortedData = page.data.sort(sort);
     sortedData = paginate(sortedData, page.paginateBy, 1)
-    console.log(sortedData.length)
     //page.visibleData = paginate(sortedData, page.pageinateBy, 1);
     page.visibleData = sortedData;
   };

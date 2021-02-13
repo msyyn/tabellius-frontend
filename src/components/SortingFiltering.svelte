@@ -44,12 +44,10 @@
     if (sortColor == 'Näytä kaikki') {
       delete page.currentParams.merkin_vari;
 
-      console.log('bblbl')
       // refresh cache if needed
       if (page.dataCache.length > 0) {
         page.data = page.dataCache;
       };
-      console.dir(page.data)
         
       if (sortOrder__prop) {
         page.data = sortBy(page.data, sortOrder__prop, sortOrder__desc);
