@@ -174,6 +174,5 @@
 <style>
   .variant-swatch--img {
     filter: blur(15px) contrast(1.8) brightness(0.9);
-    background-size: 800%;
   }
 </style>
