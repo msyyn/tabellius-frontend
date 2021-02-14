@@ -1,9 +1,9 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#A5B4FC",
+	"background_color": "#A5B4FC",
+	"theme_color": "#6366F1",
 	"name": "Tabellius",
-	"short_name": "standalone",
-	"display": "minimal-ui",
+	"short_name": "Tabellius",
+	"display": "standalone",
 	"start_url": "/",
 	"icons": [
 		{
