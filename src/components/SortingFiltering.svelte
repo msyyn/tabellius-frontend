@@ -65,7 +65,7 @@
     }; 
 
     // if we are sorting the order, let's apply it before color filtering.
-    if (sortOrder__prop) {sortedResults = sortBy(page.data, sortOrder__prop, sortOrder__desc)};
+    if (!bubbled && sortOrder__prop) {sortedResults = sortBy(page.data, sortOrder__prop, sortOrder__desc)};
 
     page.data = page.dataCache.filter(a => a.merkin_vari.includes(sortColor));
 
@@ -75,11 +75,13 @@
       page.currentParams.page = 1;
       page.currentParams.merkin_vari = sortColor;
       page.visibleData = paginate(page.data, page.paginateBy, 1);
+      delete page.currentParams.search; // reset search on filtering
+      page.currentQuery = ''; // reset search on filtering
 
       let urlQuery = new URLSearchParams(page.currentParams);
       goto(`${page.currentPath}?${urlQuery}`);
     } else {
-      page.visibleData = paginate(page.data, page.paginateBy, page.currentParams.page)
+      page.visibleData = paginate(page.data, page.paginateBy, page.currentParams.page);
     };
   };
 
@@ -87,24 +89,30 @@
   let sortOrder = 'Vaihda näkymän järjestystä';
   let sortOrder__desc = page.currentParams.descending;
   let sortOrder__prop = page.currentParams.sortBy;
+
   let sortOptions = 
   [
-    'Vanhimmasta uusimpaan',
-    'Uusimmasta vanhimaan',
-    'Merkin nimi (A-Z)',
-    'Merkin nimi (Z-A)',
-    'Taiteilijan nimi (A-Z)',
-    'Taiteilijan nimi (Z-A)',
+    { key: 'ilmestyspaiva', desc: true, value: 'Vanhimmasta uusimpaan' },
+    { key: 'ilmestyspaiva', desc: false, value: 'Uusimmasta vanhimaan' },
+    { key: 'merkin_nimi', desc: true, value: 'Merkin nimi (A-Z)' },
+    { key: 'merkin_nimi', desc: false, value: 'Merkin nimi (Z-A)' },
+    { key: 'taiteilija', desc: true, value: 'Taiteilijan nimi (A-Z)' },
+    { key: 'taiteilija', desc: false, value: 'Taiteilijan nimi (Z-A)' }
   ];
-  const updateSortOrder = (evt) => {
+  let visibleSortOptions = []; // set empty array for our dropdown's visible values
+  sortOptions.forEach((o) => { visibleSortOptions.push(o.value) }); // push the values
+
+  const updateSortOrder = (evt, bubbled) => {
     sortOrder = evt.detail ? evt.detail.value : evt;
 
-    if (sortOrder == 'Vanhimmasta uusimpaan')      { sortOrder__prop = 'ilmestyspaiva'; sortOrder__desc = true };
-    if (sortOrder == 'Uusimmasta vanhimaan')       { sortOrder__prop = 'ilmestyspaiva'; sortOrder__desc = false };
-    if (sortOrder == 'Merkin nimi (A-Z)')          { sortOrder__prop = 'merkin_nimi'; sortOrder__desc = true };
-    if (sortOrder == 'Merkin nimi (Z-A)')          { sortOrder__prop = 'merkin_nimi'; sortOrder__desc = false };
-    if (sortOrder == 'Taiteilijan nimi (A-Z)')     { sortOrder__prop = 'taiteilija'; sortOrder__desc = true };
-    if (sortOrder == 'Taiteilijan nimi (Z-A)')     { sortOrder__prop = 'taiteilija'; sortOrder__desc = false };
+    let desiredOptions = sortOptions.filter(s => (s.value == sortOrder || s.key == sortOrder));
+    sortOrder = desiredOptions[0].value;
+    sortOrder__prop = desiredOptions[0].key;
+    if (!bubbled) {
+      sortOrder__desc = desiredOptions[0].desc;
+    } else {
+      sortOrder__desc = sortOrder__desc == 'true' ? true : false;
+    };
 
     let sortedResults;
     if (page.dataCache.length > 0) {
@@ -114,24 +122,28 @@
     }
     page.visibleData = paginate(sortedResults, page.paginateBy, 1);
 
-    if (sortColor != 'Näytä kaikki') {
+    if (sortColor != 'Näytä kaikki' && !bubbled) {
       updateSortColor(sortColor, true);
       page.currentParams.merkin_vari = sortColor;
     };
 
-    page.suggestedPage = 1;
-    page.currentPage = 1;
-    page.currentParams.page = 1;
-    page.currentParams.sortBy = sortOrder__prop;
-    page.currentParams.descending = sortOrder__desc;
-    
-    let urlQuery = new URLSearchParams(page.currentParams);
-    goto(`${page.currentPath}?${urlQuery}`);
-
+    if (!bubbled) {
+      page.suggestedPage = 1;
+      page.currentPage = 1;
+      page.currentParams.page = 1;
+      page.currentParams.sortBy = sortOrder__prop;
+      page.currentParams.descending = sortOrder__desc;
+      delete page.currentParams.search; // reset search on filtering
+      page.currentQuery = ''; // reset search on filtering
+      
+      let urlQuery = new URLSearchParams(page.currentParams);
+      goto(`${page.currentPath}?${urlQuery}`);
+    }
   };
 
   // load filters on fresh page load, if url params request it.
-  if (page.currentParams.merkin_vari) { updateSortColor(page.currentParams.merkin_vari, true)};
+  if (page.currentParams.sortBy) {updateSortOrder(page.currentParams.sortBy, true)};
+  if (page.currentParams.merkin_vari) {updateSortColor(page.currentParams.merkin_vari, true)};
 </script>
 
 <div class="-mt-1 lg:mt-0 mb-4 flex flex-wrap flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
@@ -139,7 +151,7 @@
     label="Järjestä"
     bind:value={sortOrder}
     on:select={updateSortOrder}
-    options={sortOptions}
+    options={visibleSortOptions}
     placeholder={sortOrder}>
   </Dropdown>
 

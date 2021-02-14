@@ -5,13 +5,7 @@
   import StampGrid from './StampGrid.svelte';
 
   export let page;
-  export let breadcrumb;
   export let limit = 6;
-
-  if (page.currentHandle) {
-    breadcrumb = page.currentPath.replaceAll('/','').replace(page.currentHandle,'');
-    breadcrumb = breadcrumb.charAt(0).toUpperCase() + breadcrumb.slice(1);
-  }
 </script>
 
 {#each page.visibleData as artist, i}

@@ -88,7 +88,7 @@
   <span class="text-gray-400 text-xs">{artist.nimi}</span>
 </div>
 {#if page.visibleData.length}
-  <StampGrid limit={0} bind:page/>
+  <StampGrid bind:page/>
 {:else}
   <NoResults bind:page></NoResults>
 {/if}

@@ -75,7 +75,7 @@
   page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
 </script>
 
-<Toolbar bind:page/>
+<Toolbar searchPlaceholder="Hae painopaikkaa..." bind:page/>
 <Pagination bind:page/>
 {#if page.visibleData.length}
   <PrinterGrid bind:page/>

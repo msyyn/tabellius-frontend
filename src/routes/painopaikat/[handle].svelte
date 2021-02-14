@@ -14,10 +14,10 @@
   
       // We wrap artist around array because of how ArtistGrid is built.
       // It expects array and cba to refactor it at this point.
-      const printer = [{
+      const printer = {
         nimi: filteredSnapshot[0].painopaikka,
         stamps: filteredSnapshot
-      }];
+      };
   
       const params = page;
       return { printer , params };
@@ -29,11 +29,12 @@
     import Toolbar from '../../components/Toolbar.svelte';
     import Pagination from '../../components/Pagination.svelte';
     import NoResults from '../../components/NoResults.svelte';
-    import PrinterGrid from '../../components/PrinterGrid.svelte';
+    import StampGrid from '../../components/StampGrid.svelte';
   
     // our master data provided by json
     export let printer;
     export let params;
+    let breadcrumb;
   
     // check localStorage for existing viewMode
     const userViewMode = localStorage.getItem('tabellius__viewMode');
@@ -44,19 +45,21 @@
     // our page object we can share across components easily
     export let page = {
       // pagination
-      data: printer,
+      data: printer.stamps,
+      dataCache: [],
       paginateBy: 32,
       currentPage: parseInt(params.query.page) || 1,
       suggestedPage: parseInt(params.query.page) || 1,   // Paginate input controls this
       maxPages: 1,
-      visibleData: printer,
+      visibleData: printer.stamps,
   
       // other
       currentHandle: params.params.handle,
       currentPath: params.path,
       currentQuery: params.query.search,
       currentView: params.query.view || 'grid',
-      currentParams: params.query
+      currentParams: params.query,
+      showFilters: true
     };
   
     $: page.maxPages = Math.ceil(page.data.length / page.paginateBy);
@@ -68,14 +71,25 @@
       page.currentPage = 1;
       page.suggestedPage = 1;
     };
+
+    if (page.currentHandle) {
+    breadcrumb = page.currentPath.replaceAll('/','').replace(page.currentHandle,'');
+    breadcrumb = breadcrumb.charAt(0).toUpperCase() + breadcrumb.slice(1);
+  };
   
     page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
   </script>
   
   <Toolbar showFilters={true} bind:page/>
   <Pagination bind:page/>
+  <!-- Breadcrumb desktop -->
+  <div class="text-sm tracking-wide mt-4">
+    <a class="transition duration-300 ease-linear font-bold text-indigo-300 hover:text-indigo-500" href="{page.currentPath.replace(page.currentHandle,'')}" title="{breadcrumb}">{breadcrumb}</a>
+    <span class="text-gray-400 text-xs">/</span>
+    <span class="text-gray-400 text-xs">{printer.nimi}</span>
+  </div>
   {#if page.visibleData.length}
-    <PrinterGrid limit={0} bind:page/>
+    <StampGrid bind:page/>
   {:else}
     <NoResults bind:page></NoResults>
   {/if}

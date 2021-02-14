@@ -74,7 +74,7 @@
   page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
 </script>
 
-<Toolbar bind:page/>
+<Toolbar searchPlaceholder="Hae taiteilijaa..." bind:page/>
 <Pagination bind:page/>
 {#if page.visibleData.length}
   <ArtistGrid bind:page/>
