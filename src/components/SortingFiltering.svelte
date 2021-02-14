@@ -93,7 +93,7 @@
   let sortOptions = 
   [
     { key: 'ilmestyspaiva', desc: true, value: 'Vanhimmasta uusimpaan' },
-    { key: 'ilmestyspaiva', desc: false, value: 'Uusimmasta vanhimaan' },
+    { key: 'ilmestyspaiva', desc: false, value: 'Uusimmasta vanhimpaan' },
     { key: 'merkin_nimi', desc: true, value: 'Merkin nimi (A-Z)' },
     { key: 'merkin_nimi', desc: false, value: 'Merkin nimi (Z-A)' },
     { key: 'taiteilija', desc: true, value: 'Taiteilijan nimi (A-Z)' },
