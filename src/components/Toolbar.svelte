@@ -47,7 +47,6 @@
   };
 
   const initialQuery = async () => {
-    console.log('test')
     clearTimeout(timer);
     page.visibleData = await filterPage(page.data, 'all', page.currentQuery)
   };
