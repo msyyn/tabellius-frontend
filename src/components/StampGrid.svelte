@@ -16,7 +16,7 @@
         {/if}
         <h5 class="text-gray-500 text-xs pb-2 border-b border-indigo-50">Ilmestynyt {stamp.ilmestyspaiva.split('.').pop()}</h5>
         
-        <small class="text-gray-500 tracking-thick text-xs">{stamp.nimellisarvo} {stamp.valuutta}a</small>
+        <small class="text-gray-500 tracking-thick text-xs">{stamp.nimellisarvo} {stamp.valuutta}</small>
         <small class="text-gray-500 tracking-thick text-xs">Painettu {stamp.painosmaara ? `${stamp.painosmaara.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kpl` : 'tuntematon määrä'}</small>
       </div>
     </a>

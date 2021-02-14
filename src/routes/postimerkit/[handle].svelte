@@ -144,7 +144,7 @@
             </div>
             <span class="ml-4">
               <span class="text-gray-300 text-xs uppercase tracking-wide block">Nimellisarvo</span>
-              <span class="font-medium tracking-wide text-sm block">{stamp.currentVariant.nimellisarvo}{stamp.valuutta ? ` ${stamp.valuutta}a` : ' (valuutta ei tiedossa)'}</span>
+              <span class="font-medium tracking-wide text-sm block">{stamp.currentVariant.nimellisarvo}{stamp.valuutta ? ` ${stamp.valuutta}` : ' (valuutta ei tiedossa)'}</span>
             </span>
           </div>
         {/if}
