@@ -80,6 +80,11 @@
   page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
 </script>
 
+<svelte:head>
+  <title>{artist.nimi} | Tabellius - Suomalaiset postimerkit</title>
+  <meta name="description" content="Taiteilijalta {artist.nimi} on nähtävillä {artist.stamps.length} postimerkkiä. Aineisto perustuu Postimuseon avoimeen dataan.">
+</svelte:head>
+
 <Toolbar bind:page/>
 <Pagination bind:page/>
 <div class="text-sm tracking-wide mt-4">

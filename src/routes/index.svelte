@@ -1,5 +1,6 @@
 <svelte:head>
-	<title>Tabellius - Suomalaiset postimerkit ja postitoimipaikat</title>
+  <title>Tabellius - Suomalaiset postimerkit</title>
+  <meta name="description" content="Selaa suomalaisia postimerkkejä, niiden taiteilijoita ja painotaloja vuodesta 1856 alkaen. Aineisto perustuu Postimuseon avoimeen dataan.">
 </svelte:head>
 
 <script context="module">

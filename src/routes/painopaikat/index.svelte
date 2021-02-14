@@ -1,5 +1,6 @@
 <svelte:head>
-	<title>Tabellius - Postimerkkien painopaikat</title>
+  <title>Tabellius - Postimerkkien painopaikat</title>
+  <meta name="description" content="Selaa suomalaisten postimerkkien painopaikkoja vuodesta 1856 alkaen. Aineisto perustuu Postimuseon avoimeen dataan.">
 </svelte:head>
 
 <script context="module">

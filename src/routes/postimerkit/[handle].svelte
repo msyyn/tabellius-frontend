@@ -66,6 +66,11 @@
   };
 </script>
 
+<svelte:head>
+  <title>{stamp.merkin_nimi} | Tabellius - Suomalaiset postimerkit</title>
+  <meta name="description" content="{stamp.merkin_nimi} on ilmestynyt vuonna {stamp.currentVariant.ilmestyspaiva}.{stamp.taiteilija != 'Tuntematon' ? ` Taiteilijana ${stamp.taiteilija}.` : ''}{stamp.variants.length > 1 ? ` Postimerkistä on ${stamp.variants.length} muunnelmaa.` : ''} Aineisto perustuu Postimuseon avoimeen dataan.">
+</svelte:head>
+
 <Toolbar/>
 <div class="flex flex-wrap justify-center items-start w-full bg-gray-50 rounded-md lg:rounded-2xl">
   <div class="px-6 py-6 lg:px-8 lg:py-36 max-w-4xl w-full min-h-full flex flex-col-reverse lg:flex-row">

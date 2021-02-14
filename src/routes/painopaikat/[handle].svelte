@@ -79,6 +79,11 @@
   
     page.visibleData = paginate(page.data, page.paginateBy, page.currentPage);
   </script>
+
+<svelte:head>
+  <title>{printer.nimi} | Tabellius - Suomalaiset postimerkit</title>
+  <meta name="description" content="Painopaikan {printer.nimi} kokoelmasta löytyy {printer.stamps.length} suomalaista postimerkkiä. Aineisto perustuu Postimuseon avoimeen dataan.">
+</svelte:head>
   
   <Toolbar showFilters={true} bind:page/>
   <Pagination bind:page/>

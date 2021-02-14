@@ -1,5 +1,6 @@
 <svelte:head>
-	<title>Tabellius - Postimerkkien taiteilijat</title>
+  <title>Tabellius - Postimerkkien taiteilijat</title>
+  <meta name="description" content="Selaa suomalaisten postimerkkien taiteilijoita vuodesta 1856 alkaen. Aineisto perustuu Postimuseon avoimeen dataan.">
 </svelte:head>
 
 <script context="module">
