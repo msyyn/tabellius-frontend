@@ -19,8 +19,6 @@
       stamps: filteredSnapshot
     };
 
-    console.dir(artist)
-
     const params = page;
     return { artist , params };
   }
