@@ -8,7 +8,7 @@ export function generateHandle(stamp) {
     color-YEARfilename
     e.g. monivärinen-18651204
   */
-  return handleize(`${stamp.merkin_vari || 'merkki'}-${stamp.ilmestyspaiva.split('.').pop()}${stamp.kuvan_url.split('/').pop().split('.').shift()}`);
+  return handleize(`${stamp.merkin_vari || 'monivärinen'}-${stamp.ilmestyspaiva.split('.').pop()}${stamp.kuvan_url.split('/').pop().split('.').shift()}`);
 }
 
 export default { handleize, generateHandle };

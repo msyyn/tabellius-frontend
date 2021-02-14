@@ -5,7 +5,7 @@
     return str.toLowerCase().replace(/'/g, "").replace(/[^\w\u00C0-\u024f]+/g, "-").replace(/^-+|-+$/g, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
   export function generateHandle(stamp) {
-    return handleize(`${stamp.merkin_vari || 'merkki'}-${stamp.ilmestyspaiva.split('.').pop()}${stamp.kuvan_url.split('/').pop().split('.').shift()}`);
+    return handleize(`${stamp.merkin_vari || 'monivärinen'}-${stamp.ilmestyspaiva.split('.').pop()}${stamp.kuvan_url.split('/').pop().split('.').shift()}`);
   };
   export async function preload(page) {
     const response = await this.fetch('_stamps.json');
@@ -25,7 +25,7 @@
       valuutta: filteredSnapshot[currentVariantIndex].valuutta,
       kuvan_url: filteredSnapshot[currentVariantIndex].kuvan_url,
       currentVariant: {
-        merkin_vari: filteredSnapshot[currentVariantIndex].merkin_vari ? filteredSnapshot[currentVariantIndex].merkin_vari : `merkki`,
+        merkin_vari: filteredSnapshot[currentVariantIndex].merkin_vari ? filteredSnapshot[currentVariantIndex].merkin_vari : `monivärinen`,
         painosmaara: filteredSnapshot[currentVariantIndex].painosmaara,
         nimellisarvo: filteredSnapshot[currentVariantIndex].nimellisarvo,
         kayton_paattyminen: filteredSnapshot[currentVariantIndex].kayton_paattyminen,
@@ -37,7 +37,7 @@
 
     filteredSnapshot.forEach((variant,i) => {
       stamp.variants.push({
-        merkin_vari: variant.merkin_vari ? variant.merkin_vari : `merkki`,
+        merkin_vari: variant.merkin_vari ? variant.merkin_vari : `monivärinen`,
         painosmaara: variant.painosmaara,
         nimellisarvo: variant.nimellisarvo,
         kayton_paattyminen: variant.kayton_paattyminen,
