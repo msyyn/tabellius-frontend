@@ -35,7 +35,7 @@
 </script>
 
 {#if sidebarReady && $SidebarOpen}
-  <aside in:fly={{x: -40, duration: 360 }} out:fly={{x: -200, duration: 360}} use:clickOutside on:clickedOutside={clickedOutside} class="fixed lg:relative bg-white lg:flex h-screen overflow-hidden p-6 pr-12{ $SidebarOpen ? ' z-20' : ' hidden' }">
+  <aside in:fly={{x: -40, duration: 360 }} out:fly={{x: -200, duration: 360}} use:clickOutside on:clickedOutside={clickedOutside} class="fixed lg:relative bg-white lg:flex h-screen overflow-hidden p-6 pr-12{ $SidebarOpen ? ' z-30' : ' hidden' }">
 
     <nav class="flex flex-col min-h-full">
 
@@ -87,5 +87,5 @@
   </aside>
 
 
-  <div in:fade={{duration:360}} out:fade={{delay: 200, duration: 200}} class="lg:hidden w-screen h-screen absolute bg-indigo-900 bg-opacity-10"></div>
+  <div in:fade={{duration:360}} out:fade={{delay: 200, duration: 200}} class="lg:hidden w-screen z-20 h-screen absolute bg-indigo-900 bg-opacity-10"></div>
 {/if}
