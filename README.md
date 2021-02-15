@@ -2,7 +2,7 @@
 
 Svelte (Sapper) and TailwindCSS powered application built for learning purposes. Allows you to browse post stamps based on open data from the Finnish Postal Museum (Postimuseo.fi).
 
-👉 View demo: https://tabellius.msyyn.vercel.app/
+👉 View demo: https://tabellius.vercel.app/
 
 ## Licenses
 
