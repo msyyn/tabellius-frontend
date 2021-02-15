@@ -4,8 +4,12 @@ Svelte (Sapper) and TailwindCSS powered application built for learning purposes.
 
 👉 View demo: https://tabellius.msyyn.vercel.app/
 
-## Data source and license
+## Licenses
 
+### Source code
+Source code is under the [GNU Affero General Public License v3.0 (GNU AGPLv3)](https://choosealicense.com/licenses/agpl-3.0/).
+
+### Data
 Data is sourced from [Avoindata.fi](https://www.avoindata.fi/data/fi/dataset/suomalaiset-postimerkit) and it is provided by the [Finnish Postal Museum](https://www.postimuseo.fi/en/the-finnish-postal-museum/) under the name "Suomalaiset postimerkit".
 Data source is under the [Creative Commons Attribution 4.0 Intrnational License](https://creativecommons.org/licenses/by/4.0/). Original data has been manipulated only slightly; some key mappings were renamed to url friendly format, e.g. by removing scandinavian letters.
 
