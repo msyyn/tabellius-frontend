@@ -7,7 +7,19 @@ Svelte (Sapper) and TailwindCSS powered application built for learning purposes.
 ## Licenses
 
 ### Source code
-Source code is under the [GNU Affero General Public License v3.0 (GNU AGPLv3)](https://choosealicense.com/licenses/agpl-3.0/).
+Source code is under the GNU APGLv3 License.
+
+Tabellius - Copyright (C) 2021 - present
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+[GNU Affero General Public License](https://www.gnu.org/licenses/gpl-3.0.html) for more details.
 
 ### Data
 Data is sourced from [Avoindata.fi](https://www.avoindata.fi/data/fi/dataset/suomalaiset-postimerkit) and it is provided by the [Finnish Postal Museum](https://www.postimuseo.fi/en/the-finnish-postal-museum/) under the name "Suomalaiset postimerkit".
