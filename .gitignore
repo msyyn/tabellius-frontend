@@ -2,5 +2,6 @@
 /__sapper__/dev
 /__sapper__
 /src/node_modules
+/static/global.css
 
 .vercel
